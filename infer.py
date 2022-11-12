@@ -25,14 +25,14 @@ predictions = model.predict(data)
 
 # Keep track of correct guesses
 correct_guesses = 0
+errors = []
+print(f"| Correct | Guess | Difference |")
+print(f"|---------|-------|------------|")
 for o, l in zip(range(predictions.shape[0]), labels):
     # Slice predictions array for one time along axis 0 (the observations)
     obs = predictions[o, :]
     # Make a pretty box for current word and include what should be the 
     # correct number of vowels
-    reference = f"*** has {l} ***"
-    print(len(reference)*"*")
-    print(reference)
     # Extract the model's guess from the predictions
     guess = np.argmax(obs.flatten()) + 6 # Does it maybe start guessing at 0?
     if guess == l:
@@ -40,13 +40,12 @@ for o, l in zip(range(predictions.shape[0]), labels):
         good_guess = True
     else:
         good_guess = False
-    print(f"==> Best guess is  {guess:2} {'PASS' if good_guess  else 'FAIL'}   <==")
-    # Print guess as long as they're greater than a hundreth of a percent
-    for n, i in enumerate(obs.flatten()):
-        if f"{i:.0%}" != "0%":
-            print(f"`-> % certain that {l} has {n+6} vowels: {i:3.0%}")
+    print(f"| {l:7d} | {guess:5d} | {guess-l:10d} |")
+    errors.append(guess-l)
+print(f"|---------|-------|------------|")
 # Count number of correct guesses, out of all words given
-score = f"%%% SCORE: {correct_guesses:2}/{len(labels):2} ({correct_guesses/len(labels):.2%}) %%%"
+mse = sum([x**2 for x in errors])/len(errors)
+score = f"%%% SCORE: {correct_guesses:2}/{len(labels):2} ({correct_guesses/len(labels):.2%}) MSE: {mse:5.2f} %%%"
 if correct_guesses == len(labels):
     score = score.replace(" %%%", " GOOD BOI! %%%")
 print(len(score)*"%")
