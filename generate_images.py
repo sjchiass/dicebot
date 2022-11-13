@@ -83,6 +83,9 @@ class ImageGenerator:
         background = self.get_background()
         angles = self.get_angles()
         dice_images = [self.get_dice_image(x) for x in dice]
+        # Flip the dice
+        dice_flipper = [0, 6, 5, 4, 3, 2, 1]
+        dice = [dice_flipper[x] for x in dice]
         # Build the image
         output = background.copy()
         for image, angle in zip(dice_images, angles):
