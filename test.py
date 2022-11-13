@@ -15,7 +15,7 @@ for path in working_dir.glob("./raw_pics/**/*.jpg"):
     data.append(img_array)
     labels.append(int(str(path).split("/")[-2]))
 
-model = keras.models.load_model("./save_at_14.h5")
+model = keras.models.load_model("./save_at_50.h5")
 
 # Combine all images together
 data = np.concatenate(data, axis=0)

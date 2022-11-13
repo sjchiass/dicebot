@@ -62,7 +62,7 @@ def make_model(input_shape, num_classes):
     x = layers.Rescaling(1.0 / 255)(inputs)
     # Augmentation
     x = layers.RandomFlip()(x)
-    x = layers.RandomRotation(0.2)(x)
+    x = layers.RandomRotation(0.3)(x)
     #x = layers.RandomBrightness(0.2)(x)
     #x = layers.RandomContrast(0.2)(x)
     # Convolutions
@@ -96,7 +96,7 @@ def make_model(input_shape, num_classes):
 
 model = make_model(input_shape=image_size + (1,), num_classes=len(classes))
 
-epochs = 25
+epochs = 50
 
 # Save the models to use with infer.py
 callbacks = [
