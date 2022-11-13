@@ -1,4 +1,5 @@
 temp
 training_data
 *.h5
+*.tflite
 

@@ -1,0 +1,4 @@
+tflite-runtime
+adafruit-ampy
+pillow
+
