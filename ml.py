@@ -33,38 +33,14 @@ val_ds = tf.keras.preprocessing.image_dataset_from_directory(
 train_ds = train_ds.prefetch(buffer_size=32)
 val_ds = val_ds.prefetch(buffer_size=32)
 
-# ~ data_augmentation = keras.Sequential(
-    # ~ [
-        # ~ layers.RandomFlip(),
-        # ~ layers.RandomRotation(0.1),
-        # ~ layers.RandomBrightness(factor=0.1),
-        # ~ layers.RandomContrast(factor=0.1),
-    # ~ ]
-# ~ )
-
-# An example NMIST digits model is sufficient for this task, even if this
-# data is for words instead of single digits
+# Unlike my vowel counter, this requires a slightly stronger model
 def make_model(input_shape, num_classes):
     inputs = keras.Input(shape=input_shape)
-    
-    # ~ x = inputs
-    # ~ #x = data_augmentation(inputs)
-    # ~ x = layers.Rescaling(1.0 / 255)(x)
-    # ~ x = layers.Conv2D(32, kernel_size=(3, 3), activation="relu")(x)
-    # ~ x = layers.MaxPooling2D(pool_size=(2, 2))(x)
-    # ~ x = layers.Conv2D(32, kernel_size=(3, 3), activation="relu")(x)
-    # ~ x = layers.MaxPooling2D(pool_size=(2, 2))(x)
-    # ~ x = layers.Conv2D(64, kernel_size=(3, 3), activation="relu")(x)
-    # ~ x = layers.MaxPooling2D(pool_size=(2, 2))(x)
-    # ~ x = layers.Flatten()(x)
-    # ~ x = layers.Dense(64, activation="relu")(x)
     
     x = layers.Rescaling(1.0 / 255)(inputs)
     # Augmentation
     x = layers.RandomFlip()(x)
     x = layers.RandomRotation(0.3)(x)
-    #x = layers.RandomBrightness(0.2)(x)
-    #x = layers.RandomContrast(0.2)(x)
     # Convolutions
     x = layers.Conv2D(128, 3, strides=2, padding="same")(x)
     x = layers.BatchNormalization()(x)
