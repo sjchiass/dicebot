@@ -6,9 +6,9 @@ This project shakes dice with a servo motor and then takes a photo to count the 
 
 The ML part uses synthetic data with augmentation to get extra value out of a small training set. The model is right roughly 80% of the time on the test set. When it's wrong it's usually by 1.
 
-![dice_shaking.gif](A GIF of the robot shaking dice)
+![A GIF of the robot shaking dice](dice_shaking.gif)
 
-![inference_example.jpg](The robot's guess)
+![The robot's guess](inference_example.jpg)
 
 ## Workflow
 
@@ -37,11 +37,11 @@ The chassis (if you can call it that) is a cut-up cardboard box, some wooden sti
 
 This is what real dice look like. It's a 100x100 jpg converted to grayscale when read by Python.
 
-![real_dice_example.jpg](An example of real dice)
+![An example of real dice](real_dice_example.jpg)
 
 Pillow takes some photos of the empty bottle and pastes on top some cut-outs of dice. By changing the position and value of the dice, a lot of fake data can be made.
 
 This is what a fake image looks like.
 
-![fake_dice_example.jpg](An example of fake dice)
+![An example of fake dice](fake_dice_example.jpg)
 
