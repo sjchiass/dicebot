@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 # Load model
-model = tf.keras.models.load_model("./save_at_25.h5")
+model = tf.keras.models.load_model("./save_at_50.h5")
 
 # Convert the model
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
