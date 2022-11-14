@@ -30,4 +30,10 @@ output_data = interpreter.get_tensor(output_details[0]['index'])
 #print(output_data)
 
 guess = np.argmax(output_data.flatten())
-print(guess+6)
+certainty = np.max(output_data.flatten())
+output = f"### [DICELOT] BLEEP BLORP 6d6 => {guess+6} ({certainty:.1%} certain) ###"
+print(len(output)*"#")
+print(len(output)*"#")
+print(output)
+print(len(output)*"#")
+print(len(output)*"#")
