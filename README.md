@@ -2,7 +2,7 @@
 
 ## Cardboard-based random number generator
 
-This project shakes dice with a servo motor and then takes a photo to count the dice for you.
+This project rolls a 6d6 with a servo motor and then takes a photo to count the dice for you.
 
 The ML part uses synthetic data with augmentation to get extra mileage out of a small training set (27 photos -> 59,308 photos). The model is right roughly 80% of the time on the test set (125 photos; annoying to label!). When it's wrong it's usually by 1.
 
